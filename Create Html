@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gomathi | Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <h1 class="fade-in">Gomathi</h1>
+        <p class="fade-in">Web Developer | Designer | Creator</p>
+    </header>
+
+    <section id="about" class="section about">
+        <h2>About Me</h2>
+        <p>Hello! I'm <strong>Gomathi</strong>, a passionate web developer who loves creating visually appealing and functional websites. I enjoy learning new technologies and building innovative projects.</p>
+    </section>
+
+    <section id="skills" class="section skills">
+        <h2>My Skills</h2>
+        <ul>
+            <li>HTML, CSS, JavaScript</li>
+            <li>css</li>
+            <li>javascript</li>
+            
+        </ul>
+    </section>
+
+    <section id="projects" class="section projects">
+        <h2>Projects</h2>
+        <div class="project-card">Portfolio Website</div>
+        <div class="project-card">E-commerce Web App</div>
+        <div class="project-card">Blog Platform</div>
+    </section>
+
+    <section id="contact" class="section contact">
+        <h2>Contact Me</h2>
+        <p>Email: <a href="mailto:gomathi60020113@gmail.com">gomathi60020113@gmail.com</a></p>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Gomathi | All Rights Reserved</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
