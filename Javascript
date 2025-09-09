@@ -1,0 +1,7 @@
+// Small interaction: show alert when clicking on project
+document.addEventListener("DOMContentLoaded", () => {
+  const project = document.querySelector(".about h3:nth-of-type(2)");
+  project.addEventListener("click", () => {
+    alert("Project: Digital Portfolio by Gomathi");
+  });
+});
