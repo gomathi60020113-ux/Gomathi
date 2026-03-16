@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Student Activity Tracker</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="header">
+<h1>Student Activity Tracker</h1>
+<p>Welcome to your Dashboard!</p>
+
+<div class="navButtons">
+<button onclick="showSection('home')">Home</button>
+<button onclick="showSection('activities')">Activities</button>
+<button onclick="showSection('progress')">Progress</button>
+</div>
+</div>
+
+<div id="home" class="section active">
+<div class="infoBox">
+<p>This web application helps students organize and track their learning activities effectively.</p>
+
+<ul>
+<li>View a list of learning activities and tasks.</li>
+<li>Update the status of each activity (Pending / Completed).</li>
+<li>Track overall progress through a simple summary.</li>
+<li>Navigate easily between Home, Activities, and Progress sections.</li>
+</ul>
+</div>
+</div>
+
+<div id="activities" class="section">
+<div id="activityContainer"></div>
+</div>
+
+<div id="progress" class="section">
+<h2 id="progressText">0 out of 6 activities completed</h2>
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
+
+body{
+font-family: 'Segoe UI', sans-serif;
+margin:0;
+text-align:center;
+background: linear-gradient(135deg,#00c6ff,#0072ff);
+min-height:100vh;
+}
+
+/* Dashboard Header */
+
+.header{
+background: linear-gradient(135deg,#141e30,#243b55);
+padding:45px;
+color:white;
+box-shadow:0 5px 15px rgba(0,0,0,0.3);
+}
+
+.header h1{
+font-size:38px;
+font-weight:bold;
+margin:0;
+}
+
+.header p{
+font-size:18px;
+margin-top:10px;
+}
+
+/* Navigation Buttons */
+
+.navButtons{
+margin-top:25px;
+}
+
+.navButtons button{
+padding:10px 22px;
+margin:8px;
+border:none;
+border-radius:25px;
+background:#ffffff;
+color:#333;
+font-weight:bold;
+cursor:pointer;
+transition:0.3s;
+}
+
+.navButtons button:hover{
+background:#ffd54f;
+transform:scale(1.1);
+}
+
+/* Sections */
+
+.section{
+display:none;
+padding:35px;
+}
+
+.active{
+display:block;
+}
+
+/* Info Box */
+
+.infoBox{
+background:#ffffff;
+width:65%;
+margin:auto;
+padding:25px;
+border-radius:15px;
+box-shadow:0 10px 25px rgba(0,0,0,0.2);
+text-align:left;
+}
+
+/* Activity Cards */
+
+.card{
+background:#e3f2fd;
+border:3px solid #1976d2;
+width:260px;
+margin:15px auto;
+padding:18px;
+border-radius:15px;
+box-shadow:0 8px 15px rgba(0,0,0,0.2);
+transition:0.3s;
+}
+
+.card:hover{
+transform:scale(1.05);
+}
+
+.card h3{
+font-weight:bold;
+color:#0d47a1;
+}
+
+.status{
+font-weight:bold;
+color:red;
+}
+
+/* Complete Button */
+
+button.complete{
+margin-top:12px;
+background:#4caf50;
+color:white;
+padding:8px 14px;
+border:none;
+border-radius:20px;
+cursor:pointer;
+font-weight:bold;
+}
+
+button.complete:hover{
+background:#2e7d32;
+}
+
+/* Progress Section */
+
+#progressText{
+background:white;
+padding:15px;
+border-radius:10px;
+width:300px;
+margin:auto;
+box-shadow:0 5px 15px rgba(0,0,0,0.2);
+font-weight:bold;
+}
+let activities=[
+"HTML Page Creation",
+"CSS Styling Practice",
+"JavaScript Button Click",
+"Create Navigation Bar",
+"Build Contact Form",
+"DOM Manipulation"
+];
+
+let completed=0;
+
+let container=document.getElementById("activityContainer");
+
+activities.forEach(activity=>{
+
+let card=document.createElement("div");
+card.className="card";
+
+card.innerHTML=`
+<h3>${activity}</h3>
+<p>Status: <span class="status">Pending</span></p>
+<button class="complete" onclick="completeTask(this)">Mark Completed</button>
+`;
+
+container.appendChild(card);
+
+});
+
+function completeTask(btn){
+
+let status=btn.parentElement.querySelector(".status");
+
+if(status.innerHTML==="Pending"){
+
+status.innerHTML="Completed";
+status.style.color="green";
+
+btn.disabled=true;
+
+completed++;
+
+document.getElementById("progressText").innerHTML=
+completed+" out of "+activities.length+" activities completed";
+
+}
+
+}
+
+function showSection(section){
+
+document.querySelectorAll(".section").forEach(s=>{
+s.classList.remove("active");
+});
+
+document.getElementById(section).classList.add("active");
+
+}
